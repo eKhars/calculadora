@@ -76,6 +76,3 @@ treecalc/
 - Operaciones básicas: `3 + 4 * 2`
 - Con paréntesis: `(3 + 4) * 2`
 - Operaciones múltiples: `5 * (3 + 2) / 4`
-- D3.js por la librería de visualización
-- Flask por el framework web
-- Todos los contribuidores que han ayudado a mejorar este proyecto
