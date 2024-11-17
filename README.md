@@ -29,7 +29,7 @@ TreeCalc es una aplicación web moderna que combina una calculadora interactiva 
 
 1. Clona el repositorio:
 ```bash
-git clone https://github.com/your-username/treecalc.git
+git clone https://github.com/betooxx-dev/treecalc.git
 cd treecalc
 ```
 
@@ -41,7 +41,7 @@ source venv/bin/activate  # En Windows: venv\Scripts\activate
 
 3. Instala las dependencias:
 ```bash
-pip install -r requirements.txt
+pip install Flask
 ```
 
 4. Ejecuta la aplicación:
