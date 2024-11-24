@@ -76,6 +76,38 @@ body {
   overflow: hidden;
 }
 
+#token-list,
+#token-counts {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  border-radius: 12px;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+#token-list h3,
+#token-counts h3 {
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+#token-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#token-list th,
+#token-list td {
+  padding: 0.5rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#token-list th {
+  font-weight: bold;
+  color: #8e2de2;
+}
+
 .display::after {
   content: '';
   position: absolute;
@@ -148,10 +180,32 @@ button.operator {
 button.equals {
   background: linear-gradient(45deg, #4a00e0, #8e2de2);
   font-weight: bold;
+  grid-row: span 2;
+  height: 100%;
 }
 
 button.equals:hover {
   background: linear-gradient(45deg, #5a10f0, #9e3df2);
+}
+
+button.memory {
+  background: rgba(74, 0, 224, 0.3);
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+button.memory:hover {
+  background: rgba(74, 0, 224, 0.4);
+}
+
+button.backspace {
+  background: rgba(224, 0, 74, 0.3);
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+button.backspace:hover {
+  background: rgba(224, 0, 74, 0.4);
 }
 
 .tree-container {
@@ -199,6 +253,52 @@ button.equals:hover {
   stroke-width: 3px;
 }
 
+/* Token list animations */
+#token-list table tr {
+  opacity: 0;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+#token-list table tr:nth-child(n) {
+  animation-delay: calc(0.1s * var(--index));
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Token counts animations */
+#token-counts p {
+  opacity: 0;
+  animation: slideIn 0.4s ease forwards;
+}
+
+#token-counts p:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+#token-counts p:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 @media (max-width: 1200px) {
   .container {
     grid-template-columns: 1fr;
@@ -207,6 +307,11 @@ button.equals:hover {
   .calculator-section,
   .tree-section {
     width: 100%;
+  }
+  
+  #token-list,
+  #token-counts {
+    font-size: 0.8rem;
   }
 }
 
@@ -229,5 +334,70 @@ button.equals:hover {
     padding: 1.2rem;
     font-size: 1.5rem;
     min-height: 60px;
+  }
+  
+  button.memory,
+  button.backspace {
+    font-size: 1.2rem;
+  }
+  
+  #token-list,
+  #token-counts {
+    padding: 0.8rem;
+    font-size: 0.7rem;
+  }
+  
+  .node text {
+    font-size: 12px;
+  }
+  
+  .node circle {
+    r: 15;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: radial-gradient(circle at 50% -20%, #2d0070, #0f0809);
+  }
+  
+  .calculator-section,
+  .tree-section {
+    background: rgba(255, 255, 255, 0.03);
+  }
+  
+  .display {
+    background: rgba(0, 0, 0, 0.4);
+  }
+  
+  #token-list,
+  #token-counts {
+    background: rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* High contrast support */
+@media (prefers-contrast: high) {
+  body {
+    background: #000;
+  }
+  
+  .calculator-section,
+  .tree-section {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+  }
+  
+  button {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+  }
+  
+  .display {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+  }
+  
+  #token-list th {
+    color: #fff;
   }
 }
